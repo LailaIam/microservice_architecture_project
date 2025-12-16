@@ -26,21 +26,37 @@ Scikit-learn, NumPy	ML и работа с данными
 AMQP (pika)	Протокол обмена сообщениями
 # Структура проекта
 neural_network_project/
+
 ├── docker-compose.yml          # Конфигурация Docker
+
 ├── requirements.txt            # Зависимости Python
+
 ├── logs/                       # Результаты работы
+
 │   ├── metric_log.csv          # CSV с метриками
+
 │   └── error_distribution.png  # Гистограмма ошибок
+
 ├── features/                   # Генератор данных
+
 │   ├── features.py            # Задержка 10 сек + ID
+
 │   └── Dockerfile
+
 ├── model/                      # Модель предсказаний
+
 │   ├── model.py               # Предсказания
+
 │   └── Dockerfile
+
 ├── metric/                     # Сервис метрик
+
 │   ├── metric.py              # Запись в CSV
+
 │   └── Dockerfile
+
 └── plot/                       # Визуализация
+
     ├── plot.py                # Гистограмма
     └── Dockerfile
     
