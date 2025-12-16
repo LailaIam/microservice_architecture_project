@@ -1,0 +1,48 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  features:
+    build: ./features
+    environment:
+      - DOCKER_COMPOSE=true
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+
+  model:
+    build: ./model
+    environment:
+      - DOCKER_COMPOSE=true
+    depends_on:
+      - rabbitmq
+      - features
+    restart: unless-stopped
+
+  metric:
+    build: ./metric
+    environment:
+      - DOCKER_COMPOSE=true
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - rabbitmq
+      - model
+    restart: unless-stopped
+
+  plot:
+    build: ./plot
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - metric
+    restart: unless-stopped
