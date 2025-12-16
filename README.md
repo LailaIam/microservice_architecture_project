@@ -15,14 +15,27 @@
 
 # Технологический стек
 
-Python 3.9	Основной язык программирования
+Python 3.9	
 
-RabbitMQ 3-management	Брокер сообщений
+Основной язык программирования
 
-Docker + Docker Compose	Контейнеризация и оркестрация
 
-Matplotlib, Pandas	Визуализация и анализ данных
+RabbitMQ 3-management	
+
+Брокер сообщений
+
+
+Docker + Docker Compose	
+Контейнеризация и оркестрация
+
+
+Matplotlib, Pandas	
+Визуализация и анализ данных
+
 
 Scikit-learn, NumPy	ML и работа с данными
 
-AMQP (pika)	Протокол обмена сообщениями
+
+AMQP (pika)	
+
+Протокол обмена сообщениями
