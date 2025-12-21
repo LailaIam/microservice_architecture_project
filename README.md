@@ -65,23 +65,12 @@
 - y_true;
 - y_pred;
 - error (абсолютная ошибка |y_true − y_pred|).
-
-Пример логов сервиса Metric, подтверждающих запись результатов в файл metric_log.csv (на 20 логах):
-- docker-compose logs --tail=20 metric:
-<img width="913" height="457" alt="image" src="https://github.com/user-attachments/assets/9622e2e8-9bf8-4a38-b47b-f6684e6b19f6" />
   
 ### Plot: безопасное чтение
 - Проверяет, что CSV не пуст (кроме заголовка);
 - Обрабатывает возможные ошибки парсинга (формат, типы);
 - Пишет в лог состояние: файл пуст, файл не найден, график обновлен и т.д.;
 - Работает с периодическим таймером (каждые 5 секунд), чтобы не зависеть от сообщений.
- 
-Обновление гистрограммы распределения ошибокс использованием сервиса Plot (на примере 20 значений):
-- docker-compose logs --tail=20 plot
-<img width="734" height="460" alt="image" src="https://github.com/user-attachments/assets/1d4bf5e6-30f5-480c-a1b6-0cc6c37cf435" />
-
-Гистограмма распределения ошибок
-<img width="929" height="602" alt="image" src="https://github.com/user-attachments/assets/891434c4-320b-4714-b23e-129a8a0cc3e6](https://github.com/LailaIam/microservice_architecture_project/blob/main/neural_network_project/logs/error_distribution.png" />
   
 ## Docker: конструирование и сборка
 
@@ -151,3 +140,4 @@ pika — это Python-библиотека для работы с RabbitMQ.
 
 ## Итог
 Эта учебная система демонстрирует полный цикл потоковой ML-обработки: генерация признаков, инференс, оценка ошибки, визуализация — все разнесено по микросервисам, общение идет через очереди, а устойчивость обеспечивается ретраями и политиками перезапуска.
+
