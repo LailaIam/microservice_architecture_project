@@ -1,0 +1,36 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  features:
+    build: ./features
+    environment:
+      - DOCKER_COMPOSE=true
+    depends_on:
+      - rabbitmq
+
+  model:
+    build: ./model
+    environment:
+      - DOCKER_COMPOSE=true
+    depends_on:
+      - rabbitmq
+
+  metric:
+    build: ./metric
+    environment:
+      - DOCKER_COMPOSE=true
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - rabbitmq
+
+  plot:
+    build: ./plot
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - metric
